@@ -1,0 +1,15 @@
+@import "@fontsource/lugrasimo";
+@import "tailwindcss";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/background.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+  font-family: "Lugrasimo", cursive;
+  font-size: clamp(9px, 1vw, 17px);
+}

@@ -1,22 +1,132 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+import "@fontsource/abhaya-libre";
+import "destyle.css";
+import "@styles/global.css";
+
+import candleLeftImg from "@assets/Layout_headertitle_candle_left.svg";
+import candleRightImg from "@assets/Layout_headertitle_candle_right.svg";
+import pageTitle from "@assets/Layout_pagetitle.svg";
+import underline from "@assets/Layout_button_underline.svg";
+import { currentLocaleMethod } from "@stores/Stores";
+
+let switchUrl = "";
+const currentPath = Astro.url.pathname;
+const currentLocale = Astro.currentLocale;
+const otherLocale = currentLocale == "ja" ? "en" : "ja";
+if (currentLocale) {
+  switchUrl = currentPath.replace(`/${currentLocale}`, `/${otherLocale}`);
+}
+const locale = currentLocaleMethod(currentLocale);
+
+const navLinks = [
+  { href: `/${locale}`, label: "ホーム" },
+  { href: `/${locale}/Portfolio`, label: "作品一覧" },
+  { href: `/${locale}/Notice`, label: "お知らせ" },
+  { href: `/${locale}/Contact`, label: "お問い合わせ" },
+];
+const navLinks_en = [
+  { href: `/${locale}`, label: "HOME" },
+  { href: `/${locale}/Portfolio`, label: "PORTFOLIO" },
+  { href: `/${locale}/Notice`, label: "NOTICE" },
+  { href: `/${locale}/Contact`, label: "CONTACT" },
+];
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" />
+    <title>Hatopuku site</title>
+  </head>
+  <body>
+    <header class="w-full flex items-center justify-center flex-col mt-1">
+      <div class="w-full items-end">
+        <div
+          class="flex justify-center items-end"
+          style="gap: clamp(10px, 2vw, 40px); font-family: Abhaya Libre; font-size: clamp(25px, 5vw, 60px)"
+        >
+          <Image
+            src={candleLeftImg}
+            alt="candle image"
+            style={"width: clamp(27px, 5vw, 57px)"}
+          />
+          HATOPUKU WEB
+          <Image
+            src={candleRightImg}
+            alt="candle image"
+            style={"width: clamp(27px, 5vw, 57px)"}
+          />
+        </div>
+        <div class="border-b-2 border-black"></div>
+      </div>
+
+      <nav
+        class="w-full flex items-center justify-center border-y-1 border-black backdrop-blur-sm bg-black/8"
+        style="height:clamp(35px, 5vw, 80px); margin-top: clamp(1px, .5vw, 5px);"
+      >
+        {
+          (locale == "ja" ? navLinks : navLinks_en).map((link) => (
+            <ul>
+              <li
+                class={`w-[clamp(65px,10vw,170px)] mt-0.5 flex justify-center items-center `}
+              >
+                <a href={link.href}>{link.label}</a>
+              </li>
+            </ul>
+          ))
+        }
+
+        <li
+          class={`w-[clamp(65px,10vw,170px)] mt-0.5 flex justify-center items-center `}
+        >
+          <a
+            href="https://hatopuku.hatenablog.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {locale == "ja" ? "ブログ" : "BLOG"}
+          </a>
+        </li>
+      </nav>
+
+      <section class="w-full flex relative justify-center">
+        <div class="mt-2 relative" style={"width: clamp(210px, 30vw, 500px)"}>
+          <div class={"w-full h-auto"}>
+            <Image src={pageTitle} alt="page title" />
+            <div
+              class={`absolute top-[70%] left-[50%] -translate-x-1/2 -translate-y-1/2 `}
+            >
+              {title}
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="absolute flex right-5 sm:mt-2 max-sm:pt-3"
+          style="top: clamp(10px,2vw, 30px);"
+        >
+          <button class="group">
+            <a href={switchUrl}>
+              <div class="text-center">
+                {currentLocale == "ja" ? "English" : "日本語"}
+              </div>
+              <Image
+                src={underline}
+                alt="language settings button underline"
+                class="h-[clamp(5px,1vw,12px)] w-[clamp(60px,6vw,100px)] group-hover:scale-x-110 duration-300"
+              />
+            </a>
+          </button>
+        </div>
+      </section>
+    </header>
+    <slot />
+  </body>
+</html>

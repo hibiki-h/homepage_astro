@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+
+import Layout from "@layouts/Layout.astro";
+import HomeContactForm from "@components/atoms/HomeContactForm.astro";
+import ContentLayout from "@layouts/ContentLayout.astro";
+import contactButtonImage from "@assets/Home_contact_button_hand.svg";
+
+const contactText = `
+If you have any thoughts, requests, or ideas
+please send them through the form below (a.k.a. 'A Letter to the Dream World')
+Simply write your mystical words and send them my way.`;
+const formFields = [
+  { title: "name", type: "text" },
+  { title: "mail", type: "email" },
+  { title: "message", type: "text" },
+];
+---
+
+<Layout title="CONTACT">
+  <main
+    class="w-[60vw] mx-auto mt-[clamp(5px,3dvh,40px)] pb-[20dvh] space-y-40"
+  >
+    <ContentLayout contentTitle="contents">
+      <form class="py-5">
+        <div
+          class="w-full flex flex-col items-center px-[clamp(10px,4vw,80px)] space-y-8 mb-15 mt-8"
+        >
+          <div class="w-[clamp(150px,45vw,800px)] whitespace-pre-line">
+            {contactText}
+          </div>
+          {
+            formFields.map((field) => (
+              <HomeContactForm title={field.title} type={field.type} />
+            ))
+          }
+        </div>
+        <div class="w-full flex justify-end px-[clamp(10px,5vw,100px)]">
+          <button type="submit" class="w-50% flex space-x-3 group">
+            <Image
+              src={contactButtonImage}
+              alt="contact button"
+              class={"w-13 group-hover:translate-x-2 duration-300"}
+            />
+            <div>send</div>
+          </button>
+        </div>
+      </form>
+    </ContentLayout>
+  </main>
+</Layout>

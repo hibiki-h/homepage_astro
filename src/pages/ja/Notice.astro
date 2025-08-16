@@ -1,0 +1,18 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ContentLayout from "@layouts/ContentLayout.astro";
+---
+
+<Layout title="お知らせ">
+  <main
+    class="w-[60vw] mx-auto mt-[clamp(5px,3dvh,40px)] pb-[20dvh] space-y-40"
+  >
+    <ContentLayout contentTitle="一覧">
+      <div class="m-20">
+        <ul style="list-style: disc;">
+          <li>2025/8/9 - ハトプクのウェブサイト誕生</li>
+        </ul>
+      </div>
+    </ContentLayout>
+  </main>
+</Layout>

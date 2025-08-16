@@ -1,0 +1,29 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ContentLayout from "@layouts/ContentLayout.astro";
+import content01 from "@assets/Portfolio_content_img.png";
+import PortfolioContent from "@layouts/PortfolioContentLayout.astro";
+
+const overview = `An app that helps you develop habits by recording your weekly and
+            monthly schedule and progress, and visualizing your progress.`;
+---
+
+<Layout title="PORTFOLIO">
+  <main
+    class="w-[60vw] mx-auto mt-[clamp(5px,3dvh,40px)] pb-[20dvh] space-y-40"
+  >
+    <ContentLayout contentTitle="contents">
+      <div
+        class="grid grid-cols-2 gap-[clamp(40px,8dvh,100px)] place-items-center max-sm:grid-cols-1 m-15 text-center"
+      >
+        <PortfolioContent
+          contentImg={content01}
+          title={"HABICUTE"}
+          overview={overview}
+        />
+
+        <div class="h-auto my-auto">Comming soon...</div>
+      </div>
+    </ContentLayout>
+  </main>
+</Layout>

@@ -1,0 +1,59 @@
+---
+import "@styles/global.css";
+import Layout from "@layouts/Layout.astro";
+import ContentLayout from "@layouts/ContentLayout.astro";
+import HomeTextContentLayout from "@components/atoms/HomeTextContent.astro";
+
+const aboutText = `ようこそ！！ハトプクのネバーランドへ！！
+ここは私の想像力を爆発させて作成したポートフォリオなどの作品を掲載し
+世に愛と勇気を届けられたらなと思えるきっかけを私に与えてくれそうな場所です！
+※安心してください、ポートフォリオなどいろいろ作成したものを上げていくサイトです！
+
+どうぞ、コーヒーを片手に葉巻を吸いながら ゆったりとみていってください`;
+const textContent_like = `
+音楽を聞くこと
+特にAviciiの「The Nights」は歌詞ともに愛しすぎてます
+愛しすぎかもしれません`;
+const textContent_dislike = `
+スギ花粉（人生における最強の天敵です）
+段差があるわけでもない普通の道でこけてしまった時に感じる人の視線
+笑っている時にたまに変な声で笑ってしまった時に感じるその場の空気`;
+---
+
+<Layout title="ホーム">
+  <main
+    class="w-[60vw] mx-auto mt-[clamp(5px,3dvh,40px)] pb-[20dvh] space-y-30"
+  >
+    <ContentLayout contentTitle="概要">
+      <div
+        class="whitespace-pre-line my-[clamp(20px,4dvh,50px)] px-[clamp(20px,3vw,60px)]"
+      >
+        {aboutText}
+      </div>
+    </ContentLayout>
+
+    <ContentLayout contentTitle="作者プロフィール">
+      <HomeTextContentLayout
+        title="趣味"
+        text="\n筋トレと筋トレと筋トレ、たまに読書、映画・アニメ鑑賞"
+      />
+
+      <HomeTextContentLayout title="好きなもの・事" text={textContent_like} />
+
+      <HomeTextContentLayout
+        title="見ると「癒されるな～」「いいなぁ～」と思える対象物"
+        text="\n犬、自然、なんかかわいいオーラを持っている物体"
+      />
+
+      <HomeTextContentLayout
+        title="嫌いなもの・事"
+        text={textContent_dislike}
+      />
+
+      <HomeTextContentLayout
+        title="尊敬する人"
+        text="\nパイレーツオブカリビアンの「キャプテン・ジャック・スパロウ」"
+      />
+    </ContentLayout>
+  </main>
+</Layout>

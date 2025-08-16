@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+import contentImage from "@assets/Content_title_feather.svg";
+
+const { contentTitle } = Astro.props;
+---
+
+<div>
+  <div class="w-full">
+    <div class="px-[clamp(20px,3vw,60px)] pb-3 flex flex-row items-baseline">
+      <Image
+        src={contentImage}
+        alt="content image"
+        class="w-[clamp(20px,3vw,50px)] relative top-1"
+      />
+      <div>{contentTitle}</div>
+    </div>
+    <div class="w-full border-b border-b-black"></div>
+  </div>
+  <slot />
+  <div class="w-full border-b border-b-black"></div>
+</div>

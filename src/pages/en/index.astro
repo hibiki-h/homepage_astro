@@ -1,0 +1,56 @@
+---
+import "@styles/global.css";
+import Layout from "@layouts/Layout.astro";
+import ContentLayout from "@layouts/ContentLayout.astro";
+import HomeTextContentLayout from "@components/atoms/HomeTextContent.astro";
+
+const aboutText = `Here's where I post my portfolio works
+basically my online hobby shelf.Feel free to browse… 
+I promise nothing here bites
+(except maybe my sense of humor).`;
+const textContent_like = `
+I love listen to music.especially Avicii's The Nights.
+I might love it too much...
+like'singing it in shower and scaring the neighbors'too much`;
+const textContent_dislike = `
+Cedar pollen(Greatest enemies of my life)
+The stares you get when you trip on a perfectly normal road`;
+---
+
+<Layout title="HOME">
+  <main
+    class="w-[60vw] mx-auto mt-[clamp(5px,3dvh,40px)] pb-[20dvh] space-y-40"
+  >
+    <ContentLayout contentTitle="about">
+      <div
+        class="whitespace-pre-line my-[clamp(20px,4dvh,50px)] px-[clamp(20px,3vw,60px)]"
+      >
+        {aboutText}
+      </div>
+    </ContentLayout>
+
+    <ContentLayout contentTitle="profile">
+      <HomeTextContentLayout
+        title="hobby"
+        text="\nworkout,reading,watching movies and anime"
+      />
+
+      <HomeTextContentLayout title="favorite things" text={textContent_like} />
+
+      <HomeTextContentLayout
+        title="Stuff that makes me go,'This is nice'and melts my stress away like ice cream in July"
+        text="\nPuppies,the great outdoors,and random objects with an undeniable 'aww!' aura"
+      />
+
+      <HomeTextContentLayout
+        title="unfavorite things"
+        text={textContent_dislike}
+      />
+
+      <HomeTextContentLayout
+        title="a person i respect"
+        text="\nCaptain Jack Sparrow from Pirates of the Caribbean"
+      />
+    </ContentLayout>
+  </main>
+</Layout>
