@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import { getRelativeLocaleUrl } from "astro:i18n";
 
 import "@fontsource/abhaya-libre";
 import "destyle.css";
@@ -64,12 +63,12 @@ const { title } = Astro.props;
             style={"width: clamp(27px, 5vw, 57px)"}
           />
         </div>
-        <div class="border-b-2 border-black"></div>
+        <div style="border-bottom: 3px solid black;" />
       </div>
 
       <nav
-        class="w-full flex items-center justify-center border-y-1 border-black backdrop-blur-sm bg-black/8"
-        style="height:clamp(35px, 5vw, 80px); margin-top: clamp(1px, .5vw, 5px);"
+        class="w-full flex items-center justify-center backdrop-blur-sm bg-black/10"
+        style="height:clamp(35px, 5vw, 80px); margin-top: clamp(1px, .5vw, 5px); border-bottom: 1px solid black; border-top: 1px solid black;"
       >
         {
           (locale == "ja" ? navLinks : navLinks_en).map((link) => (

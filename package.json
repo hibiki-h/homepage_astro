@@ -13,16 +13,15 @@
     "@fontsource/abhaya-libre": "^5.2.6",
     "@fontsource/lugrasimo": "^5.2.6",
     "@nanostores/react": "^1.0.0",
-    "@tailwindcss/vite": "^4.1.11",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
+    "@tailwindcss/vite": "^4.1.12",
+    "@types/react-dom": "^19.1.9",
     "astro": "^5.10.1",
     "destyle.css": "^4.0.1",
     "nanostores": "^1.0.1",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "sass": "^1.89.2",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.12"
   },
   "description": "```sh npm create astro@latest -- --template basics ```",
   "main": "index.js",
@@ -30,6 +29,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/react": "^19.1.12",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1"
   }

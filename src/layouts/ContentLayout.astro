@@ -15,8 +15,8 @@ const { contentTitle } = Astro.props;
       />
       <div>{contentTitle}</div>
     </div>
-    <div class="w-full border-b border-b-black"></div>
+    <div class="w-full" style="border-bottom: 1px solid black;"></div>
   </div>
   <slot />
-  <div class="w-full border-b border-b-black"></div>
+  <div class="w-full" style="border-bottom: 1px solid black;"></div>
 </div>

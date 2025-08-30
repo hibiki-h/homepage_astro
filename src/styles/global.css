@@ -13,3 +13,8 @@ body {
   font-family: "Lugrasimo", cursive;
   font-size: clamp(9px, 1vw, 17px);
 }
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: none; /* ← これが無いと、見た目上は押せてしまうことがある */
+}
